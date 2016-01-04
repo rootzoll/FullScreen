@@ -27,6 +27,31 @@ below the cordova.js script.
 
 
 ```javascript
+//in cordova 
+
+    document.addEventListener("deviceready", function () {
+        setTimeout(function () {
+            ScreenUtil.settings("FULL_SCREEN");
+            ScreenUtil.settings("DISABLE_TIMEOUT");
+        }, 500);
+    }, false);
+    
+    
+//in ionic
+
+   angular.module('yourModule')
+    .controller('yourController', function ($scope, $timeout) {
+
+        angular.element(document).ready(function () {
+            $timeout($scope.ScreenCalibrate, 500);//invoking the plugin in a timeout function
+        });
+
+        $scope.ScreenCalibrate = function () {
+            ScreenUtil.settings("FULL_SCREEN");
+            ScreenUtil.settings("DISABLE_TIMEOUT");
+        };
+
+    });
 
 ```
 

@@ -4,13 +4,12 @@ function ScreenUtil() {
     console.log("ScreenUtil.js: is created");
 }
 
-ScreenUtil.prototype.settings = function (action, callback) {
-    var args = [statusBar, onScreenButton, timeout];
+ScreenUtil.prototype.settings = function (action) {
     exec(function (result) {
-//        callback(result);
+        //        callback(result);
     }, function (result) {
         alert(JSON.stringify(result));
-    }, "ScreenUtil", action, args);
+    }, "ScreenUtil", action, []);
 };
 
 var ScreenUtil = new ScreenUtil();

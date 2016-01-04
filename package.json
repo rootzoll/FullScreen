@@ -1,16 +1,16 @@
 {
-    "name": "cordova-plugin-screen-util",
+    "name": "cordova-plugin-screen-uility",
     "version": "0.0.0",
     "description": "Cordova screen uility plugin that enable an application to disable the status bar, the on screen button (navigation button) thus allow the application to be in full screen mode and also set the display timeout to infinite.",
     "cordova": {
-        "id": "cordova-plugin-fullscreen",
+        "id": "cordova-plugin-screen-uility",
         "platforms": [
       "android"
     ]
     },
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/fazleyKholil/FullScreen.git"
     },
     "keywords": [
         "ecosystem:cordova",
