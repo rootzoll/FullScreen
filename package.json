@@ -1,0 +1,30 @@
+{
+    "name": "cordova-plugin-fullscreen",
+    "version": "0.0.0",
+    "description": "Cordova screen uility plugin that enable an application to disable the status bar, the on screen button (navigation button) thus allow the application to be in full screen mode and also set the display timeout to infinite.",
+    "cordova": {
+        "id": "cordova-plugin-fullscreen",
+        "platforms": [
+      "android"
+    ]
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "keywords": [
+        "ecosystem:cordova",
+        "cordova-android",
+        "cordova-plugin-screen-utility",
+        "screen",
+        "full",
+        "full screen",
+        "status bar",
+        "disable timeout",
+        "timeout",
+        "infinite display",
+        "disable on screen button"
+  ],
+    "author": "Kholil Mohammad Fazley",
+    "license": "Apache 2.0"
+}
