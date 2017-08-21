@@ -69,12 +69,12 @@ public class StayAwake extends CordovaPlugin {
     
     public void disableTimeOut() {
         Log.i(TAG, "cordova-android-styawake --> disableTimeOut");
-        cordova.getActivity().getWindow().clearFlags(FLAG_KEEP_SCREEN_ON);
+        cordova.getActivity().getWindow().addFlags(FLAG_KEEP_SCREEN_ON);
     }
 
     public void reactivateTimeOut() {
         Log.i(TAG, "cordova-android-styawake --> reactivateTimeOut");
-        cordova.getActivity().getWindow().addFlags(FLAG_KEEP_SCREEN_ON);
+        cordova.getActivity().getWindow().clearFlags(FLAG_KEEP_SCREEN_ON);
     }
 
 }
