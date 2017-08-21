@@ -20,18 +20,15 @@ import android.view.View;
 import android.view.WindowManager;
 
 
-public class ScreenUtil extends CordovaPlugin {
+public class StayAwake extends CordovaPlugin {
 
-    public static final String TAG = "fullScreen Plugin";
-    public static final String MyPREFERENCES = "ScreenUtil";
-    public static final int FLAG_FULLSCREEN      = 0x00000400;
+    public static final String TAG = "cordova-android-styawake";
     public static final int FLAG_KEEP_SCREEN_ON     = 0x00000080;
-    public static final int FLAG_FORCE_NOT_FULLSCREEN   = 0x00000800;
 
     /**
      * Constructor.
      */
-    public ScreenUtil() {}
+    public StayAwake() {}
 
     /**
      * Sets the context of the Command. This can then be used to do things like
@@ -42,23 +39,22 @@ public class ScreenUtil extends CordovaPlugin {
      */
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
-        Log.v(TAG, "Init ScreenUtil fullsreen plugin");
+        Log.i(TAG, "Init cordova-android-styawake plugin");
     }
-
 
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         
-        if ("FULL_SCREEN".equals(action)) {
+        if ("REACTIVATE_TIMEOUT".equals(action)) {
             cordova.getActivity().runOnUiThread(new Runnable() {
                 public void run() {
-                     setPreferences();
+                    reactivateTimeOut();
                     callbackContext.success(); // Thread-safe.
                 }
             });
             return true;
         }
-          else if ("DISABLE_TIMEOUT".equals(action)) {
+        else if ("DISABLE_TIMEOUT".equals(action)) {
             cordova.getActivity().runOnUiThread(new Runnable() {
                 public void run() {
                      disableTimeOut();
@@ -70,31 +66,15 @@ public class ScreenUtil extends CordovaPlugin {
         
         return false;
     }
-
-    public void setPreferences() {
-            disableStatusBar();
-            disableOnscreenButton();
-    }
     
     public void disableTimeOut() {
-        cordova.getActivity().getWindow().addFlags(FLAG_KEEP_SCREEN_ON);
+        Log.i(TAG, "cordova-android-styawake --> disableTimeOut");
+        cordova.getActivity().getWindow().clearFlags(FLAG_KEEP_SCREEN_ON);
     }
 
-    public void disableStatusBar() {
-        cordova.getActivity().getWindow().clearFlags(FLAG_FORCE_NOT_FULLSCREEN);
-        cordova.getActivity().getWindow().setFlags(FLAG_FULLSCREEN,FLAG_FULLSCREEN); //int flag, int mask
-    }
-    
-    public void disableOnscreenButton() {
-        if (Build.VERSION.SDK_INT < 19) { //19 or above api
-            View v = cordova.getActivity().getWindow().getDecorView();
-            v.setSystemUiVisibility(View.GONE);
-        } else {
-            //for lower api versions.
-            View decorView = cordova.getActivity().getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-            decorView.setSystemUiVisibility(uiOptions);
-        }
+    public void reactivateTimeOut() {
+        Log.i(TAG, "cordova-android-styawake --> reactivateTimeOut");
+        cordova.getActivity().getWindow().addFlags(FLAG_KEEP_SCREEN_ON);
     }
 
 }

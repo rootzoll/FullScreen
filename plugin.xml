@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-screen-uility" version="0.0.0">
-        <name>cordova-plugin-screen-uility</name>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-android-stayawake" version="0.0.1">
+        <name>cordova-android-stayawake</name>
         <description>Cordova screen uility plugin that enable an application to disable the status bar, the on screen button (navigation button) thus allow the application to be in full screen mode and also set the display timeout to infinite.</description>
         <license>Apache 2.0</license>
         <keywords>
-            ecosystem:cordova, cordova-android, cordova-plugin-screen-utility, screen, timeout, navigation button, status bar, disable on screen button
+            ecosystem:cordova, cordova-android, infinite display timeout
         </keywords>
         <repo></repo>
         <issue></issue>
 
-        <js-module src="www/ScreenUtil.js" name="ScreenUtil">
-            <clobbers target="ScreenUtil" />
+        <js-module src="www/StayAwake.js" name="StayAwake">
+            <clobbers target="StayAwake" />
         </js-module>
 
         <!-- android -->
         <platform name="android">
             <config-file target="res/xml/config.xml" parent="/*">
-                <feature name="ScreenUtil">
-                    <param name="android-package" value="ScreenUtil" />
+                <feature name="StayAwake">
+                    <param name="android-package" value="StayAwake" />
                 </feature>
             </config-file>
-            <source-file src="src/android/ScreenUtil.java" target-dir="src/" />
+            <source-file src="src/android/StayAwake.java" target-dir="src/" />
         </platform>
 
     </plugin>

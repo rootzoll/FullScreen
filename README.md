@@ -1,14 +1,11 @@
-cordova-plugin-screen-util
+cordova-android-stayawake
 
 =========
 
-A small library providing utility methods to `disable` the status bar of an application as well as the navigation button on the screen thus allowing the application to be in full screen mode. In addition, it provides the method to `disable` timeout for that particular application thus enable it to stay awake.
+A small library providing utility methods to `disable` screen timeout for that particular application thus enable it to stay awake.
 
 ## Constraint
  <ul>
-     <li>
-         The on screen navigation button will appear only if you swipe up at the bottom of the screen.
-     </li>
      <li>
          Support only android.
      </li>
@@ -16,45 +13,19 @@ A small library providing utility methods to `disable` the status bar of an appl
 
 
 ## Installation
-  cordova plugin add cordova-plugin-screen-util
+  cordova plugin add https://github.com/rootzoll/cordova-android-stayawake
 
 ## Usage
 In the index.html include :
 ```html
- <script src="ScreenUtil.js"></script>
+ <script src="StayAwake.js"></script>
 ```
-below the cordova.js script.
+provides you the following two scripts:
 
 
 ```javascript
-//in cordova 
-
-    document.addEventListener("deviceready", function () {
-        setTimeout(function () {
-            ScreenUtil.settings("FULL_SCREEN");
-            ScreenUtil.settings("DISABLE_TIMEOUT");
-        }, 500);
-    }, false);
-    
-    
-//in ionic
-
-   angular.module('yourModule')
-    .controller('yourController', function ($scope, $timeout) {
-
-        angular.element(document).ready(function () {
-            $timeout($scope.ScreenCalibrate, 500);//invoking the plugin in a timeout function
-        });
-
-        $scope.ScreenCalibrate = function () {
-            ScreenUtil.settings("FULL_SCREEN");
-            ScreenUtil.settings("DISABLE_TIMEOUT");
-        };
-
-    });
-
+    StayAwake.disableScreenTimeout();
+    StayAwake.enableScreenTimeout();
 ```
 
-## Release History
-
-* 0.0.0 Initial release
+Just use when device is ready.
